@@ -33,4 +33,3 @@ public class VaultHook {
         if (economy != null && amount > 0) economy.depositPlayer(p, amount);
     }
 }
-(Also add src/main/resources/boosters-data.yml containing just active: [].)
