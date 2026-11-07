@@ -147,7 +147,7 @@ public class EloCommand implements CommandExecutor, TabCompleter {
             switch (mode) {
                 case "set" -> { rp.addElo(amount - rp.elo()); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-set").replace("%player%", a[1]).replace("%amount%", a[2]));; }
                 case "add" -> { rp.addElo(amount); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-added").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo()))); }
-                case "remove" -> { rp.addElo(-amount); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-removed").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo());)); }
+                case "remove" -> { rp.addElo(-amount); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-removed").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo()))); }
             }
             plugin.ranks().applyRankChange(rp);
             rp.markDirty();
