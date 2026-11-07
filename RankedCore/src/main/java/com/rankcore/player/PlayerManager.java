@@ -17,7 +17,7 @@ public class PlayerManager {
     private final Map<UUID, RankedPlayer> cache = new ConcurrentHashMap<>();
     private final Map<UUID, Object> locks = new ConcurrentHashMap<>();
     private final Map<String, Long> killCooldowns = new ConcurrentHashMap<>();
-    private final Map<String, Deque<String>> historyCache = new ConcurrentHashMap<>();
+    private final Map<String, List<String[]>> historyCache = new ConcurrentHashMap<>();
     private List<String[]> leaderboardCache = new ArrayList<>();
     private Map<UUID, Integer> positionCache = new HashMap<>();
     private long leaderboardStamp;
@@ -130,7 +130,7 @@ public class PlayerManager {
     public CompletableFuture<List<String[]>> history(UUID uuid) {
         return CompletableFuture.supplyAsync(() -> {
             List<String[]> h = plugin.database().history(uuid, plugin.fileCfg("config.yml").getInt("performance.history-limit", 8));
-            historyCache.put(uuid.toString(), new ArrayDeque<>(h));
+            historyCache.put(uuid.toString(), new ArrayList<>(h));
             return h;
         });
     }
