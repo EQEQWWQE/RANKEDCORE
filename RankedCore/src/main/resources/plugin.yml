@@ -1,0 +1,29 @@
+name: RankedCore
+version: 1.0.0
+main: com.rankcore.RankedCore
+api-version: '26.2'
+description: Competitive Elo ranking system (LT5-HT1) for Economy Survival servers.
+softdepend: [LuckPerms, TAB, LPC, Vault, PlaceholderAPI, Citizens]
+commands:
+  elo:
+    description: RankedCore competitive ranking commands.
+    usage: /elo help
+    aliases: [ranked]
+permissions:
+  ranked.use: {default: true}
+  ranked.stats: {default: true}
+  ranked.top: {default: true}
+  ranked.profile: {default: true}
+  ranked.history: {default: true}
+  ranked.boosters: {default: true}
+  ranked.admin: {default: op}
+  ranked.admin.set: {default: op}
+  ranked.admin.add: {default: op}
+  ranked.admin.remove: {default: op}
+  ranked.admin.reset: {default: op}
+  ranked.admin.resetall: {default: op}
+  ranked.admin.rank: {default: op}
+  ranked.admin.booster: {default: op}
+  ranked.admin.reload: {default: op}
+  ranked.admin.debug: {default: op}
+  ranked.bypass.cooldown: {default: op}

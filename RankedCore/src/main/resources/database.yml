@@ -1,0 +1,15 @@
+type: SQLITE          # SQLITE | MYSQL
+sqlite:
+  file: "data.db"
+mysql:
+  host: "localhost"
+  port: 3306
+  database: "rankedcore"
+  username: "root"
+  password: "changeme"
+  use-ssl: false
+pool:
+  maximum-pool-size: 10
+backup:
+  enabled: true
+  interval-hours: 24

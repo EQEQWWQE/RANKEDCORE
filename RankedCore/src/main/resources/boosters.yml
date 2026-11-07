@@ -1,0 +1,15 @@
+stacking: MULTIPLICATIVE   # ADDITIVE | MULTIPLICATIVE | HIGHEST
+apply-to-death-penalties: false
+bossbar:
+  enabled: true
+  color: "PURPLE"
+actionbar-seconds: 60
+announce-start: true
+announce-end: true
+events: []
+# events:
+#   - id: weekend-2x
+#     name: "2x Elo Weekend"
+#     multiplier: 2.0
+#     start: "2026-11-08T18:00:00"
+#     duration-minutes: 2880

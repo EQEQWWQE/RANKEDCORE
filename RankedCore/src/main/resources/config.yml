@@ -1,0 +1,57 @@
+plugin:
+  prefix: "<gradient:#55FFFF:#FF55FF>RankedCore</gradient> <dark_gray>»</dark_gray> "
+
+elo:
+  starting-elo: 0
+  min-elo: 0
+  max-elo: 3000
+  k-factor: 32
+  min-kill-reward: 1
+  max-kill-reward: 64
+  min-death-penalty: 0
+  max-death-penalty: 32
+  multiplier: 1.0
+  rounding: HALF_UP
+  placement:
+    enabled: false
+    matches: 5
+    k-factor: 64
+
+combat:
+  kill-cooldown-seconds: 300
+  blocked-worlds: [spawn_world, creative]
+  count-environmental-deaths: false
+  combat-log:
+    enabled: true
+    window-seconds: 15
+    penalty: 10
+    broadcast: true
+
+economy:
+  enabled: true
+  kill-reward: 50.0
+  death-loss: 0.0
+  rank-up-rewards: true
+  milestone-rewards: true
+
+milestones:
+  500: "money:500"
+  1000: "money:2000"
+  1500: "money:5000"
+
+streak-announce:
+  5: "<yellow>%player% is on a <gold>5 kill streak!</gold></yellow>"
+  10: "<gold>%player% is on a <red>10 KILL STREAK!</red></gold>"
+
+leaderboard:
+  cache-seconds: 120
+  min-playtime-minutes: 0
+
+decay:
+  enabled: false
+  days-inactive: 14
+  elo-per-week: 25
+
+performance:
+  autosave-minutes: 5
+  history-limit: 8

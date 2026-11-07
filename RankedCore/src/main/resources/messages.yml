@@ -1,0 +1,41 @@
+no-permission: "<red>You don't have permission.</red>"
+player-only: "<red>Console: use player name arguments.</red>"
+unknown-player: "<red>Unknown player: %player%</red>"
+invalid-number: "<red>Invalid number: %input%</red>"
+invalid-rank: "<red>Invalid rank: %input%</red>"
+
+elo-summary:
+  - "<dark_gray>―――――――――――――――――――――――</dark_gray>"
+  - "<white>%ranked_rank_suffix% <gray>・</gray> <yellow>%ranked_elo% Elo</yellow> <gray>(peak %ranked_peak_elo%)</gray></white>"
+  - "<gray>Kills:</gray> <white>%ranked_kills%</white> <gray>Deaths:</gray> <white>%ranked_deaths%</white> <gray>KDR:</gray> <white>%ranked_kdr%</white>"
+  - "<gray>Next rank:</gray> <white>%ranked_next_rank%</white> <gray>(%ranked_elo_to_next_rank% Elo to go)</gray>"
+  - "<dark_gray>―――――――――――――――――――――――</dark_gray>"
+
+kill: "<green>+%amount% Elo</green> <gray>for killing</gray> <white>%victim%</white> <gray>(%victim_elo% → streak %streak%)</gray>"
+death: "<red>-%amount% Elo</red> <gray>killed by</gray> <white>%killer%</white>"
+cooldown-blocked: "<gray>Kill on %victim% ignored (cooldown).</gray>"
+combat-log-penalty: "<red>-%amount% Elo for combat logging.</red>"
+combat-log-broadcast: "<yellow>%player% combat logged and lost %amount% Elo!</yellow>"
+
+rank-up: "%message%"
+rank-down: "%message%"
+rank-broadcast: "<gold>%player% reached rank %ranked_rank_suffix%</gold>"
+
+booster-start: "<gradient:#FF55FF:#55FFFF>BOOSTER STARTED:</gradient> <white>%name%</white> <gray>(%multiplier%x Elo for %duration%)</gray>"
+booster-end: "<gray>Booster %name% has ended.</gray>"
+no-boosters: "<gray>No active Elo boosters.</gray>"
+booster-active: "<white>%name%</white> <gray>・ %multiplier%x ・ %time_left% remaining</gray>"
+
+elo-set: "<green>Set %player%'s Elo to %amount%.</green>"
+elo-added: "<green>Added %amount% Elo to %player% (now %new%).</green>"
+elo-removed: "<green>Removed %amount% Elo from %player% (now %new%).</green>"
+elo-reset: "<green>Reset %player%'s competitive data.</green>"
+elo-resetall: "<green>Reset ALL competitive data. (%count% players)</green>"
+reload: "<green>RankedCore reloaded.</green>"
+
+history-entry: "<gray>%time%</gray>  <white>%signed% Elo</white> <gray>(%reason% vs %other%)</gray>"
+history-empty: "<gray>No recent Elo changes.</gray>"
+leaderboard-header: "<gold>Top %type%</gold> <gray>・ page %page%</gray>"
+leaderboard-entry: "<white>#%pos%</white> <white>%name%</white> <gray>・</gray> <yellow>%value%</yellow>"
+debug: "<gray>[Debug %player%] elo=%elo% rank=%rank% cached=%cached% kills=%kills% deaths=%deaths%</gray>"
+history-header: "<gold>%player%'s recent Elo history</gold>"

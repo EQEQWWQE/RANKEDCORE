@@ -1,0 +1,36 @@
+profile:
+  title: "<gradient:#55FFFF:#FF55FF>%player%'s Profile</gradient>"
+  size: 54
+rank-progression:
+  title: "<gradient:#FFD700:#FF4500>Rank Ladder</gradient>"
+  size: 54
+leaderboard:
+  title: "<gold>Leaderboard</gold>"
+  size: 54
+boosters:
+  title: "<light_purple>Elo Boosters</light_purple>"
+  size: 27
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    name: " "
+    lore: []
+  profile-head:
+    material: PLAYER_HEAD
+    name: "<white>%player%</white>"
+    lore:
+      - "%ranked_rank_suffix% <gray>・</gray> <yellow>%ranked_elo% Elo</yellow>"
+      - "<gray>K/D:</gray> <white>%ranked_kills%/%ranked_deaths%</white> <gray>KDR:</gray> <white>%ranked_kdr%</white>"
+      - "<gray>Peak:</gray> <white>%ranked_peak_elo%</white> <gray>Best streak:</gray> <white>%ranked_killstreak%</white>"
+      - "<gray>Progress:</gray> <white>%ranked_elo_to_next_rank% Elo to %ranked_next_rank%</white>"
+  rank-item:
+    name: "%rank_suffix%"
+    lore:
+      - "<gray>Requires %min_elo% Elo</gray>"
+      - "%status%"
+  next-page:
+    material: ARROW
+    name: "<green>Next page</green>"
+  prev-page:
+    material: ARROW
+    name: "<green>Previous page</green>"

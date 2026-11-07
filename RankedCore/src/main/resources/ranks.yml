@@ -1,0 +1,124 @@
+# Order does NOT matter; sorted by min-elo automatically.
+# suffix uses MiniMessage: hex <#FFAA00>, gradients <gradient:a:b>, glyphs <font:...> or raw resource-pack chars.
+ranks:
+  LT5:
+    min-elo: 0
+    display: "LT5"
+    color: "<gray>"
+    suffix: "<gray>[LT5]</gray>"
+    rank-up-message: "<green>You ranked up to LT5!</green>"
+    rank-down-message: "<red>You ranked down to LT5.</red>"
+    rank-up-sound: "entity.player.levelup"
+    rank-down-sound: "entity.villager.no"
+    broadcast: false
+    particles-up: "HAPPY_VILLAGER"
+    rewards: []
+  HT5:
+    min-elo: 100
+    display: "HT5"
+    color: "<white>"
+    suffix: "<white>:ht5glyph: HT5</white>"
+    rank-up-message: "<green>You ranked up to HT5!</green>"
+    rank-down-message: "<red>You ranked down to HT5.</red>"
+    rank-up-sound: "entity.player.levelup"
+    rank-down-sound: "entity.villager.no"
+    broadcast: false
+    particles-up: "HAPPY_VILLAGER"
+    rewards: ["money:100"]
+  LT4:
+    min-elo: 200
+    display: "LT4"
+    color: "<green>"
+    suffix: "<green>:lt4glyph: LT4</green>"
+    rank-up-message: "<green>You ranked up to LT4!</green>"
+    rank-down-message: "<red>You ranked down to LT4.</red>"
+    rank-up-sound: "entity.player.levelup"
+    rank-down-sound: "entity.villager.no"
+    broadcast: false
+    particles-up: "HAPPY_VILLAGER"
+    rewards: ["money:150"]
+  HT4:
+    min-elo: 300
+    display: "HT4"
+    color: "<dark_green>"
+    suffix: "<dark_green>:ht4glyph: HT4</dark_green>"
+    rank-up-message: "<green>You ranked up to HT4!</green>"
+    rank-down-message: "<red>You ranked down to HT4.</red>"
+    rank-up-sound: "entity.player.levelup"
+    rank-down-sound: "entity.villager.no"
+    broadcast: false
+    particles-up: "HAPPY_VILLAGER"
+    rewards: ["money:200"]
+  LT3:
+    min-elo: 450
+    display: "LT3"
+    color: "<yellow>"
+    suffix: "<yellow>:lt3glyph: LT3</yellow>"
+    rank-up-message: "<green>You ranked up to LT3!</green>"
+    rank-down-message: "<red>You ranked down to LT3.</red>"
+    rank-up-sound: "entity.player.levelup"
+    rank-down-sound: "entity.villager.no"
+    broadcast: true
+    particles-up: "END_ROD"
+    rewards: ["money:300"]
+  HT3:
+    min-elo: 600
+    display: "HT3"
+    color: "<gold>"
+    suffix: "<gold>:ht3glyph: HT3</gold>"
+    rank-up-message: "<green>You ranked up to HT3!</green>"
+    rank-down-message: "<red>You ranked down to HT3.</red>"
+    rank-up-sound: "entity.player.levelup"
+    rank-down-sound: "entity.villager.no"
+    broadcast: true
+    particles-up: "END_ROD"
+    rewards: ["money:400"]
+  LT2:
+    min-elo: 800
+    display: "LT2"
+    color: "<aqua>"
+    suffix: "<aqua>:lt2glyph: LT2</aqua>"
+    rank-up-message: "<green>You ranked up to LT2!</green>"
+    rank-down-message: "<red>You ranked down to LT2.</red>"
+    rank-up-sound: "entity.player.levelup"
+    rank-down-sound: "entity.villager.no"
+    broadcast: true
+    particles-up: "TOTEM_OF_UNDYING"
+    rewards: ["money:600"]
+  HT2:
+    min-elo: 1000
+    display: "HT2"
+    color: "<dark_aqua>"
+    suffix: "<dark_aqua>:ht2glyph: HT2</dark_aqua>"
+    rank-up-message: "<green>You ranked up to HT2!</green>"
+    rank-down-message: "<red>You ranked down to HT2.</red>"
+    rank-up-sound: "ui.toast.challenge_complete"
+    rank-down-sound: "entity.villager.no"
+    broadcast: true
+    particles-up: "TOTEM_OF_UNDYING"
+    rewards: ["money:800"]
+  LT1:
+    min-elo: 1250
+    display: "LT1"
+    color: "<light_purple>"
+    suffix: "<light_purple>:lt1glyph: LT1</light_purple>"
+    rank-up-message: "<gradient:#AA00AA:#FF55FF>You ranked up to LT1!</gradient>"
+    rank-down-message: "<red>You ranked down to LT1.</red>"
+    rank-up-sound: "ui.toast.challenge_complete"
+    rank-down-sound: "entity.villager.no"
+    broadcast: true
+    particles-up: "DRAGON_BREATH"
+    rewards: ["money:1000"]
+  HT1:
+    min-elo: 1500
+    display: "HT1"
+    color: "<red>"
+    suffix: "<gradient:#FFD700:#FF8C00>:ht1glyph: HT1</gradient>"
+    rank-up-message: "<gradient:#FFD700:#FF4500>You reached HT1 — the pinnacle!</gradient>"
+    rank-down-message: "<red>You ranked down from HT1.</red>"
+    rank-up-sound: "item.totem.use"
+    rank-down-sound: "entity.villager.no"
+    broadcast: true
+    particles-up: "DRAGON_BREATH"
+    rewards: ["money:2000"]
+(Note: I wrote min-elo above — fix that to min-elo when pasting; keep the key ASCII min-elo.)
