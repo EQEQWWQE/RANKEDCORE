@@ -16,7 +16,6 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.profile.PlayerProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,13 +66,12 @@ public class GuiManager implements Listener {
         Inventory inv = Bukkit.createInventory(new Holder(Type.PROFILE, 0, target.getName()), size, Msg.parse(title));
         ItemStack head = item("profile-head", Material.PLAYER_HEAD);
         SkullMeta sm = (SkullMeta) head.getItemMeta();
-        PlayerProfile prof = Bukkit.createProfile(target.getUniqueId(), target.getName());
-        sm.setPlayerProfile(prof);
+        sm.setOwningPlayer(target);
         sm.displayName(Msg.parse("<white>" + target.getName() + "</white>"));
-        sm.lore(List.of(Msg.parse(rank.suffix() + " <gray>・</gray> <yellow>" + rp.elo() + " Elo</yellow>"),
-                Msg.parse("<gray>K/D:</gray> <white>" + rp.kills() + "/" + rp.deaths() + "</white> <gray>KDR:</gray> <white>" + rp.kdr() + "</white>"),
-                Msg.parse("<gray>Peak:</gray> <white>" + rp.peakElo() + "</white> <gray>Best streak:</gray> <white>" + rp.bestStreak() + "</white>"),
-                Msg.parse("<gray>Progress:</gray> <white>" + (next != null ? (next.minElo() - rp.elo()) + " Elo to " + next.display() : "Top rank reached") + "</white>")));
+        sm.setLore(List.of(rank.suffix() + " ・ " + rp.elo() + " Elo",
+                "K/D: " + rp.kills() + "/" + rp.deaths() + "  KDR: " + rp.kdr(),
+                "Peak: " + rp.peakElo() + "  Best streak: " + rp.bestStreak(),
+                "Progress: " + (next != null ? (next.minElo() - rp.elo()) + " Elo to " + next.display() : "Top rank reached")));
         head.setItemMeta(sm);
         inv.setItem(13, head);
         fill(inv);
@@ -123,10 +121,10 @@ public class GuiManager implements Listener {
             String[] row = top.get(start + i);
             ItemStack head = new ItemStack(Material.PLAYER_HEAD);
             SkullMeta sm = (SkullMeta) head.getItemMeta();
-            sm.setPlayerProfile(Bukkit.createProfile(row[0]));
+            sm.setOwningPlayer(Bukkit.getOfflinePlayer(row[0]));
             int pos = start + i + 1;
             sm.displayName(Msg.parse("<gold>#" + pos + "</gold> <white>" + row[0] + "</white>"));
-            sm.lore(List.of(Msg.parse("<yellow>" + row[1] + " Elo</yellow>")));
+            sm.setLore(List.of(row[1] + " Elo"));
             head.setItemMeta(sm);
             inv.setItem(i, head);
         }
