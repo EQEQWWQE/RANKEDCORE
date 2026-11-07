@@ -47,7 +47,7 @@ public class BoosterManager {
             ConfigurationSection e = ev.getConfigurationSection(id);
             try {
                 LocalDateTime start = LocalDateTime.parse(Objects.requireNonNull(e.getString("start")));
-                long startMs = start.atZone(ZoneId.systemDefault()).toInstant().toMillis();
+                long startMs = start.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
                 long endMs = startMs + e.getLong("duration-minutes") * 60000L;
                 scheduled.add(new Booster(id, e.getString("name", id), e.getDouble("multiplier"), startMs, endMs));
             } catch (Exception ex) { plugin.getLogger().warning("Bad scheduled booster " + id + ": " + ex.getMessage()); }
@@ -146,4 +146,3 @@ public class BoosterManager {
         }, 20L, 20L);
     }
 }
-(Create src/main/resources/boosters-data.yml with content active: [].)
