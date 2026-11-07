@@ -140,16 +140,16 @@ public class GuiManager implements Listener {
                 Msg.parse(plugin.fileCfg("gui.yml").getString("boosters.title", "Boosters")));
         int slot = 10;
         if (plugin.boosters().active().isEmpty() && plugin.boosters().scheduled().isEmpty())
-            inv.setItem(13, named(Material.BARRIER, "<gray>No boosters</gray>", List.of(Msg.parse("<gray>Check back later!</gray>"))));
+            inv.setItem(13, named(Material.BARRIER, "<gray>No boosters</gray>", List.of("<gray>Check back later!</gray>")));
         for (var b : plugin.boosters().active()) {
             inv.setItem(slot++, named(Material.EXPERIENCE_BOTTLE, "<light_purple>" + b.name + "</light_purple>",
-                    List.of(Msg.parse("<white>" + b.multiplier + "x Elo</white>"),
-                            Msg.parse("<gray>" + com.rankcore.booster.BoosterManager.fmt(b.remaining()) + " remaining</gray>"))));
+                    List.of("<white>" + b.multiplier + "x Elo</white>",
+                            "<gray>" + com.rankcore.booster.BoosterManager.fmt(b.remaining()) + " remaining</gray>")));
         }
         for (var b : plugin.boosters().scheduled()) {
             inv.setItem(slot++, named(Material.CLOCK, "<yellow>Upcoming: " + b.name + "</yellow>",
-                    List.of(Msg.parse("<white>" + b.multiplier + "x Elo</white>"),
-                            Msg.parse("<gray>Starts at " + Msg.fmtTime(b.start) + "</gray>"))));
+                    List.of("<white>" + b.multiplier + "x Elo</white>",
+                            "<gray>Starts at " + Msg.fmtTime(b.start) + "</gray>")));
         }
         fill(inv);
         p.openInventory(inv);
