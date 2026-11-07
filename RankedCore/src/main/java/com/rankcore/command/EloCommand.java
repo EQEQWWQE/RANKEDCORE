@@ -111,7 +111,7 @@ public class EloCommand implements CommandExecutor, TabCompleter {
                     RankedPlayer rp = plugin.players().get(p.getUniqueId());
                     if (rp != null) { rp.addElo(-rp.elo()); rp.onDeath(); rp.onKill(); }
                 }
-                Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-resetall").replace("%count%", String.valueOf(n)););
+                Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-resetall").replace("%count%", String.valueOf(n)));
             });
             case "rank" -> setRank(sender, a);
             case "reload" -> { plugin.reloadAllConfigs(); plugin.ranks().load(); Msg.send(sender, plugin, "reload"); }
@@ -146,7 +146,7 @@ public class EloCommand implements CommandExecutor, TabCompleter {
         plugin.players().load(target.getUniqueId(), a[1]).thenAccept(rp -> Bukkit.getScheduler().runTask(plugin, () -> {
             switch (mode) {
                 case "set" -> { rp.addElo(amount - rp.elo()); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-set").replace("%player%", a[1]).replace("%amount%", a[2]));; }
-                case "add" -> { rp.addElo(amount); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-added").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo());)); }
+                case "add" -> { rp.addElo(amount); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-added").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo()))); }
                 case "remove" -> { rp.addElo(-amount); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-removed").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo());)); }
             }
             plugin.ranks().applyRankChange(rp);
