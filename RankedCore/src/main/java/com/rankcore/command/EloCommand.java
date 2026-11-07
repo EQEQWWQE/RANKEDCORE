@@ -41,7 +41,7 @@ public class EloCommand implements CommandExecutor, TabCompleter {
         if (name == null) { Msg.send(sender, plugin, "player-only"); return true; }
         Player target = Bukkit.getPlayerExact(name);
         RankedPlayer rp = target != null ? plugin.players().get(target.getUniqueId()) : null;
-        if (rp == null) { Msg.send(sender, plugin, "unknown-player").replace("%player%", name); return true; }
+        if (rp == null) { Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "unknown-player").replace("%player%", name));; return true; }
         Rank rank = plugin.ranks().rankFor(rp.elo());
         Rank next = plugin.ranks().next(rank);
         String prefix = Msg.prefix(plugin);
@@ -111,7 +111,7 @@ public class EloCommand implements CommandExecutor, TabCompleter {
                     RankedPlayer rp = plugin.players().get(p.getUniqueId());
                     if (rp != null) { rp.addElo(-rp.elo()); rp.onDeath(); rp.onKill(); }
                 }
-                Msg.send(sender, plugin, "elo-resetall").replace("%count%", String.valueOf(n));
+                Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-resetall").replace("%count%", String.valueOf(n)););
             });
             case "rank" -> setRank(sender, a);
             case "reload" -> { plugin.reloadAllConfigs(); plugin.ranks().load(); Msg.send(sender, plugin, "reload"); }
@@ -122,7 +122,7 @@ public class EloCommand implements CommandExecutor, TabCompleter {
             }
             case "debug" -> {
                 Player t = Bukkit.getPlayerExact(a.length > 1 ? a[1] : (sender instanceof Player p ? p.getName() : ""));
-                if (t == null) { Msg.send(sender, plugin, "unknown-player").replace("%player%", ""); break; }
+                if (t == null) { Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "unknown-player").replace("%player%", ""));; break; }
                 RankedPlayer rp = plugin.players().get(t.getUniqueId());
                 Msg.sendRaw(sender, Msg.color(plugin, "debug")
                         .replace("%player%", t.getName()).replace("%elo%", rp != null ? String.valueOf(rp.elo()) : "?")
@@ -141,13 +141,13 @@ public class EloCommand implements CommandExecutor, TabCompleter {
         String perm = "ranked.admin." + mode;
         if (!perm(sender, perm)) return;
         int amount = parseInt(a[2], -1);
-        if (amount < 0) { Msg.send(sender, plugin, "invalid-number").replace("%input%", a[2]); return; }
+        if (amount < 0) { Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "invalid-number").replace("%input%", a[2]));; return; }
         OfflinePlayer target = Bukkit.getOfflinePlayer(a[1]);
         plugin.players().load(target.getUniqueId(), a[1]).thenAccept(rp -> Bukkit.getScheduler().runTask(plugin, () -> {
             switch (mode) {
-                case "set" -> { rp.addElo(amount - rp.elo()); Msg.send(sender, plugin, "elo-set").replace("%player%", a[1]).replace("%amount%", a[2]); }
-                case "add" -> { rp.addElo(amount); Msg.send(sender, plugin, "elo-added").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo())); }
-                case "remove" -> { rp.addElo(-amount); Msg.send(sender, plugin, "elo-removed").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo())); }
+                case "set" -> { rp.addElo(amount - rp.elo()); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-set").replace("%player%", a[1]).replace("%amount%", a[2]));; }
+                case "add" -> { rp.addElo(amount); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-added").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo());)); }
+                case "remove" -> { rp.addElo(-amount); Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-removed").replace("%player%", a[1]).replace("%amount%", a[2]).replace("%new%", String.valueOf(rp.elo());)); }
             }
             plugin.ranks().applyRankChange(rp);
             rp.markDirty();
@@ -160,7 +160,7 @@ public class EloCommand implements CommandExecutor, TabCompleter {
         plugin.players().load(target.getUniqueId(), name).thenAccept(rp -> Bukkit.getScheduler().runTask(plugin, () -> {
             rp.addElo(-rp.elo()); rp.onDeath(); rp.onKill();
             plugin.ranks().applyRankChange(rp);
-            Msg.send(sender, plugin, "elo-reset").replace("%player%", name);
+            Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "elo-reset").replace("%player%", name));;
         }));
     }
 
@@ -168,7 +168,7 @@ public class EloCommand implements CommandExecutor, TabCompleter {
         if (!perm(sender, "ranked.admin.rank")) return;
         if (a.length < 3) { Msg.sendRaw(sender, "Usage: /elo admin rank <player> <rank>"); return; }
         Rank rank = plugin.ranks().byId(a[2]);
-        if (rank == null) { Msg.send(sender, plugin, "invalid-rank").replace("%input%", a[2]); return; }
+        if (rank == null) { Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "invalid-rank").replace("%input%", a[2]));; return; }
         OfflinePlayer target = Bukkit.getOfflinePlayer(a[1]);
         plugin.players().load(target.getUniqueId(), a[1]).thenAccept(rp -> Bukkit.getScheduler().runTask(plugin, () -> {
             rp.addElo(rank.minElo() - rp.elo());
@@ -185,10 +185,10 @@ public class EloCommand implements CommandExecutor, TabCompleter {
                 if (a.length < 3) { Msg.sendRaw(sender, "Usage: /elo admin booster start <multiplier> <duration like 60m/2h>"); return; }
                 double mult;
                 try { mult = Double.parseDouble(a[1]); } catch (NumberFormatException ex) {
-                    Msg.send(sender, plugin, "invalid-number").replace("%input%", a[1]); return;
+                    Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "invalid-number").replace("%input%", a[1]));; return;
                 }
                 long ms = parseDuration(a[2]);
-                if (ms <= 0) { Msg.send(sender, plugin, "invalid-number").replace("%input%", a[2]); return; }
+                if (ms <= 0) { Msg.sendRaw(sender, Msg.prefix(plugin) + Msg.color(plugin, "invalid-number").replace("%input%", a[2]));; return; }
                 String name = a.length > 3 ? a[3] : mult + "x Booster";
                 plugin.boosters().start(name, mult, ms);
                 Msg.sendRaw(sender, "<green>Booster started: " + name + " for " + com.rankcore.booster.BoosterManager.fmt(ms) + "</green>");
